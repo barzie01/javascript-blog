@@ -26,12 +26,14 @@ for (let activeArticle of activeArticles){
     activeArticle.classList.remove('active');
 }
 
-/* [IN PORGRESS] get 'href' atribute from the clicked link */
+/* [DONE] get 'href' atribute from the clicked link */
 
 const attributeOfElement = clickedElement.getAttribute('href');
 console.log(attributeOfElement);
 
-/* find the correct article using the selector (value of 'href' atribute) */
+/* [IN PROGRESS] find the correct article using the selector (value of 'href' atribute) */
+
+const selectedArticle = document.getElementById(attributeOfElement);
 
 /* add class 'active' to the correct article */
 
