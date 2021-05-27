@@ -31,12 +31,12 @@ for (let activeArticle of activeArticles){
 const attributeOfElement = clickedElement.getAttribute('href');
 console.log(attributeOfElement);
 
-/* [IN PROGRESS] find the correct article using the selector (value of 'href' atribute) */
+/* [DONE] find the correct article using the selector (value of 'href' atribute) */
 
-const selectedArticle = document.getElementById(attributeOfElement);
+const selectedArticle = document.querySelector(attributeOfElement);
 
-/* add class 'active' to the correct article */
-
+/* [DONE] add class 'active' to the correct article */
+selectedArticle.classList.add('active');
 }
 
 const links = document.querySelectorAll('.titles a');
