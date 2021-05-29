@@ -2,8 +2,9 @@
 
 /* Variables */
 
-$color-light: #fff;
+$color-deep-dark: #000;
 $color-dark: #444;
+$color-medium: #ccc;
 
 $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
@@ -16,9 +17,9 @@ $font-text: 'Source Sans Pro', sans-serif;
 }
 
 body {
-  background: $color-light;
+  background: $color-dark;
   font-family: $font-text;
-  color: $color-dark;
+  color: $color-deep-dark;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
@@ -54,10 +55,12 @@ body {
 
 .posts {
   flex: 2 0 0;
+  position: relative;
+  height: 85vh;
 }
 
 .sidebar, .posts {
-  background: $color-light;
+  background: $color-medium;
   margin-right: 10px;
   padding: 40px;
   border: 1px solid $color-dark;
@@ -68,6 +71,7 @@ body {
 
 .logo {
   font-family: $font-logo;
+  color: $color-medium;
   font-weight: 400;
   font-size: 104px;
   line-height: 1;
@@ -102,9 +106,14 @@ body {
 /* Post */
 
 .post {
-  display: none;
+  opacity: 0;
+  transition: .1s;
+  position: absolute;
+  left: 10%;
+  right: 10%;
   &.active {
-    display: block;
+    opacity: 1;
+    z-index: 2;
   }
 }
 
@@ -116,5 +125,29 @@ body {
   display: flex;
   p {
     margin: 0 10px 0 0;
+  }
+}
+
+/* Media queries */
+
+@media(max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .list li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .posts, .post {
+    position: static;
+  }
+
+  .post {
+    display: none;
+    &.active {
+      display: block;
+    }
   }
 }
