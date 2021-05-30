@@ -151,3 +151,15 @@ body {
     }
   }
 }
+
+@media(min-width: 769px) {
+  .posts {
+    height: 100vh;
+  }
+}
+
+@media(min-width: 865px) {
+  .posts {
+    height: 85vh;
+  }
+}
