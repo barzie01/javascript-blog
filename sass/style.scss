@@ -47,6 +47,7 @@ body {
 .wrapper {
   display: flex;
   margin-left: 10px;
+  height: 80vh;
 }
 
 .sidebar {
@@ -55,8 +56,6 @@ body {
 
 .posts {
   flex: 2 0 0;
-  position: relative;
-  height: 85vh;
 }
 
 .sidebar, .posts {
@@ -106,14 +105,9 @@ body {
 /* Post */
 
 .post {
-  opacity: 0;
-  transition: .1s;
-  position: absolute;
-  left: 10%;
-  right: 10%;
+  display: none;
   &.active {
-    opacity: 1;
-    z-index: 2;
+    display: block;
   }
 }
 
@@ -140,26 +134,10 @@ body {
     margin-right: 10px;
   }
 
-  .posts, .post {
-    position: static;
-  }
-
   .post {
     display: none;
     &.active {
       display: block;
     }
-  }
-}
-
-@media(min-width: 769px) {
-  .posts {
-    height: 100vh;
-  }
-}
-
-@media(min-width: 865px) {
-  .posts {
-    height: 85vh;
   }
 }
