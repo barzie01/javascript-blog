@@ -94,6 +94,8 @@ function generateTitleLinks(customSelector = ''){
   }
 }
 
+generateTitleLinks();
+
 function generateTags(){
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
