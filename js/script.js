@@ -204,7 +204,7 @@ function generateAuthors () {
 
     let html = '';
 
-    const articleAuthor = authorWrapper.getAttribute('data-author');
+    const articleAuthor = article.getAttribute('data-author');
     console.log(articleAuthor);
 
     const linkHTML = 'by ' + '<a href ="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
