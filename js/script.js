@@ -260,7 +260,7 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
-  const links = document.querySelectorAll('.post-tags .list a');
+  const links = document.querySelectorAll('a[href^="#tag-"]');
 
   /* START LOOP: for each link */
   for (let link of links) {
@@ -335,7 +335,7 @@ function generateAuthors () {
 
     for (let articleAuthor in allAuthors) {
 
-      const authorLinkHTML = '<li><a href ="author-' + articleAuthor + '">' + articleAuthor + ' (' + (allAuthors[articleAuthor]) + ')' + '</a></li>';
+      const authorLinkHTML = '<li><a href ="#author-' + articleAuthor + '">' + articleAuthor + ' (' + (allAuthors[articleAuthor]) + ')' + '</a></li>';
 
       console.log(articleAuthor);
 
@@ -383,7 +383,7 @@ function authorClickHandler (event) {
 
 function addClickListenersToAuthors() {
 
-  const links = document.querySelectorAll('.post-author a');
+  const links = document.querySelectorAll('a[href^="#author-"]');
 
   for (let link of links) {
 
