@@ -101,6 +101,31 @@ body {
   }
 }
 
+/* Tags */
+
+.list, .tags li a {
+  text-decoration: none;
+}
+
+.list, .tags li {
+  display: inline-block;
+}
+
+.tag-size-1 {
+  font-size: 100%;
+  color:darkslateblue;
+}
+
+.tag-size-3 {
+  font-size: 115%;
+  color: cadetblue;
+}
+
+.tag-size-5 {
+  font-size: 135%;
+  color:darkcyan;
+}
+
 /* Post */
 
 .post {
