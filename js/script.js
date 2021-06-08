@@ -1,5 +1,23 @@
 'use strict';
 
+const opts = {
+  title: {
+    selector: '.post-title',
+    listSelector: '.titles',
+  },
+  article: {
+    selector: '.post',
+    tagsSelector: '.post-tags .list',
+    authorSelector: '.post-author',
+  },
+  tagsListSelector: '.tags.list',
+  cloud: {
+    classCount: 5,
+    classPrefix: 'tag-size-',
+  },
+  authorsListSelector: '.list.authors',
+};
+
 function titleClickHandler(event){
   event.preventDefault();
   const clickedElement = this;
@@ -40,25 +58,15 @@ function titleClickHandler(event){
   selectedArticle.classList.add('active');
 }
 
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.list.authors';
-
 function generateTitleLinks(customSelector = ''){
   console.log('function generateTitleLinks is running');
-  const titlesList = document.querySelector(optTitleListSelector);
+  const titlesList = document.querySelector(opts.title.listSelector);
 
   /* remove contents of titleList */
   titlesList.innerHTML = '';
 
   /* find all the articles and save them to variable: articles */
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.article.selector + customSelector);
 
   console.log ('customSelector: ', customSelector);
 
@@ -71,7 +79,7 @@ function generateTitleLinks(customSelector = ''){
     const articleId = article.getAttribute('id');
 
     /* find the title element */
-    const titleElement = article.querySelector(optTitleSelector);
+    const titleElement = article.querySelector(opts.title.selector);
 
     /* get the title from the title element */
     const articleTitle = titleElement.innerHTML;
@@ -128,10 +136,10 @@ function calculateTagClass(count, params) {
 
   const percentage = normalizedCount / normalizedMax;
 
-  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+  const classNumber = Math.floor( percentage * (opts.cloud.classCount - 1) + 1 );
 
 
-  return optCloudClassPrefix + classNumber;
+  return opts.cloud.classPrefix + classNumber;
 }
 
 function generateTags() {
@@ -139,13 +147,13 @@ function generateTags() {
   let allTags = {};
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.article.selector);
   
   /* START LOOP: for every article: */
   for (let article of articles) {
   
     /* find tags wrapper */
-    const tagsWrapper = article.querySelector(optArticleTagsSelector);
+    const tagsWrapper = article.querySelector(opts.article.tagsSelector);
   
     /* make html variable with empty string */
     let html = '';
@@ -182,7 +190,7 @@ function generateTags() {
     }
 
     /* [NEW] find list of tags in right column */
-    const tagList = document.querySelector(optTagsListSelector);
+    const tagList = document.querySelector(opts.tagsListSelector);
 
     const tagsParams = calculateTagsParams(allTags);
     console.log('tagsParams:', tagsParams);
@@ -298,11 +306,11 @@ function generateAuthors () {
   /* [NEW] create a new variable allAuthors with an empty array */
   let allAuthors = {};
 
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.article.selector);
 
   for (let article of articles){
 
-    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    const authorWrapper = article.querySelector(opts.article.authorSelector);
 
     let html = '';
 
@@ -325,7 +333,7 @@ function generateAuthors () {
       allAuthors[articleAuthor]++;
     }
   
-    const authorList = document.querySelector(optAuthorsListSelector);
+    const authorList = document.querySelector(opts.authorsListSelector);
 
     const authorsParams = calculateAuthorsParams(allAuthors);
     
